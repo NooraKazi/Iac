@@ -17,5 +17,5 @@ jobs:
       uses: azure/powershell@v1
       with:
         inlineScript: |
-          Get-AzResource -TagName ${{ secrets.tagname }} -TagValue ${{ secrets.TagValue }} | where{$_.resourcegroupname -eq ${{ secrets.rg }}}| Remove-AzResource -force
+          Get-AzResource -TagName 'Action' -TagValue 'Delete' | where{$_.resourcegroupname -eq 'webapps3-dev-rg'}| Remove-AzResource -force
         azPSVersion: "latest"
