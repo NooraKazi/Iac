@@ -22,7 +22,7 @@ jobs:
       with:
         azcliversion: '2.0.72'
         inlineScript: 
-        - |
+        
           # !/bin/bash
 
           # Specify target resource group and tag
