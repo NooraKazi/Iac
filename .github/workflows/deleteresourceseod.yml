@@ -3,11 +3,6 @@ on:
   workflow_dispatch:
   #schedule:
     #- cron: '0 0 * * *' # Runs at midnight every day
-env:
-  rg: 'webapps3-dev-rg' 
-  tagname : 'Action'
-  TagValue: 'Delete'
-
 jobs:
   delete-resources:
     runs-on: ubuntu-latest
