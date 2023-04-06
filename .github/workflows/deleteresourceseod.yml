@@ -19,20 +19,20 @@ jobs:
         azcliversion: '2.0.72'
         inlineScript:
 
-# Specify target resource group and tag
-subscription = '7dcf7d82-02f5-4995-80d9-c84f88197343' |
-resource_group = 'webapps3-dev-rg' |
-tag='Action' |
+'# Specify target resource group and tag
+subscription = '7dcf7d82-02f5-4995-80d9-c84f88197343' 
+resource_group = 'webapps3-dev-rg' 
+tag='Action' 
 
 # Set subscript ion
-az account set -subscription ${subscription} |
+az account set -subscription ${subscription} 
 
 # Get list of resources with specific tag
-resource_list=`az resource list --tag ${tag} --subscription ${subscription}`|
+resource_list=`az resource list --tag ${tag} --subscription ${subscription}`
 
 # Get number of resources to be deleted
-num_resources=`echo $resource_list | jq length` |
-echo 'Found' $num_resources 'resources'|
+num_resources=`echo $resource_list | jq length` 
+echo 'Found' $num_resources 'resources'
 
 # Delete resources
 for((i=0; i<$num_resources; i++)); do
@@ -45,5 +45,5 @@ for((i=0; i<$num_resources; i++)); do
     echo 'resource type': $type
     
     # Delete $i th resource
-    az resource delete -g ${resource_group} -n ${name} --resource-type ${type} |
-done
+    az resource delete -g ${resource_group} -n ${name} --resource-type ${type} 
+done '
