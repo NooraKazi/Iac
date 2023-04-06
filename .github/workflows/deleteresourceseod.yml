@@ -5,22 +5,15 @@ on:
     #- cron: '0 0 * * *' # Runs at midnight every day
     
 jobs:
+
   delete-resources:
     runs-on: ubuntu-latest
     steps:
       - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-  runscript:
-    - name: Delete resources eod
-    runs-on: ubuntu-latest
-    steps:
-      -name: Call a Bash Script
-      run: bash ${GITHUB_WORKSPACE}/deleteresourceseod.sh
-      
-
-   
-  
-   
+      - name: Delete resources eod
+        run: bash ${GITHUB_WORKSPACE}/deleteresourceseod.sh
+    
