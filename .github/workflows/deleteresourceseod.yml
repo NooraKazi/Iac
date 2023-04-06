@@ -4,43 +4,23 @@ on:
   #schedule:
     #- cron: '0 0 * * *' # Runs at midnight every day
     
-  env:
-    resource_group: 'webapps3-dev-rg'
-    tag: 'Action'
-    subscription: '7dcf7d82-02f5-4995-80d9-c84f88197343'
-    
 jobs:
   delete-resources:
     runs-on: ubuntu-latest
     steps:
-    - name: Login to Azure
+      - name: Login to Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         
-    - name: Delete Resource Group
-      uses: azure/cli@v1
-      with:
-        azcliversion: 2.0.72
-        inlineScript: 
-        
-        # !/bin/bash
+  runscript:
+    - name: Delete resources eod
+    runs-on: ubuntu-latest
+    steps:
+      -name: Call a Bash Script
+      run: bash ${GITHUB_WORKSPACE}/deleteresourceseod.sh
+      
 
-        # Set subscription
-          az account set --subscription ${{ env.subscription }}
-
-        # Get list of resources with specific tag
-          resource_list= 'az resource list --tag ${{ env.tag }} --subscription ${{ env.subscription }}'
-
-        # Get number of resources to be deleted
-          num_resources='echo $resource_list | jq length'
-         
-        # Delete resources
-          for((i=0; i<$num_resources; i++)); do
-            # Get $i th resource name and type
-            name='echo $resource_list | jq .[$i].name | tr -d '"''
-            type='echo $resource_list | jq .[$i].type | tr -d '"''
-
-            # Delete $i th resource
-            az resource delete -g ${{ env.resource_group }} -n ${name} --resource-type ${type}
-          done
+   
+  
+   
