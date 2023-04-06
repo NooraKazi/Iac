@@ -3,6 +3,10 @@ on:
   workflow_dispatch:
   #schedule:
     #- cron: '0 0 * * *' # Runs at midnight every day
+env:
+  rg: 'webapps3-dev-rg' 
+  tagname : 'Action'
+  TagValue: 'Delete'
 
 jobs:
   delete-resources:
@@ -17,4 +21,5 @@ jobs:
       uses: azure/cli@v1
       with:
         azcliversion: '2.0.72'
-        inlineScript: 'az resource delete -TagName Action -TagValue Delete | where{$_.resourcegroupname -eq webapps3-dev-rg}| az resource delete '
+        inlineScript: |
+          az resource delete -TagName ${{ env.tagname}} -TagValue ${{ env.TagValue}}| where{$_.resourcegroupname -eq ${{ env.rg}}}| az resource delete
