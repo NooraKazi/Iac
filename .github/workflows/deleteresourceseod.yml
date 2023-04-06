@@ -15,5 +15,5 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
         
       - name: Delete resources eod
-        run: bash deleteresourceseod.sh
+        run: bash ${GITHUB_WORKSPACE}/deleteresourceseod.sh
     
