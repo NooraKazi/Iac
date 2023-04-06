@@ -17,11 +17,11 @@ jobs:
       uses: azure/cli@v1
       with:
         azcliversion: '2.0.72'
-        inlineScript: >
+        inlineScript: 
 
-# Specify target resource group and tag
- subscription = '7dcf7d82-02f5-4995-80d9-c84f88197343' 
- resource_group = 'webapps3-dev-rg' 
+"# Specify target resource group and tag
+subscription = '7dcf7d82-02f5-4995-80d9-c84f88197343' 
+resource_group = 'webapps3-dev-rg' 
 tag='Action' 
 
 # Set subscript ion
@@ -46,4 +46,4 @@ for((i=0; i<$num_resources; i++)); do
     
     # Delete $i th resource
     az resource delete -g ${resource_group} -n ${name} --resource-type ${type} 
-done 
+done "
