@@ -21,7 +21,7 @@ jobs:
     - name: Delete Resource Group
       uses: azure/cli@v1
       with:
-        azcliversion: '2.0.72'
+        azcliversion: 2.0.72
         inlineScript: 
         
           # !/bin/bash
@@ -30,7 +30,7 @@ jobs:
             az account set --subscription ${{ env.subscription }}
 
           # Get list of resources with specific tag
-            resource_list: 'az resource list --tag ${{ env.tag }} --subscription ${{ env.subscription }}'
+            resource_list= 'az resource list --tag ${{ env.tag }} --subscription ${{ env.subscription }}'
 
           # Get number of resources to be deleted
             num_resources='echo $resource_list | jq length'
