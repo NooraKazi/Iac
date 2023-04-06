@@ -27,13 +27,13 @@ jobs:
         # !/bin/bash
 
         # Set subscription
-        az account set --subscription ${{ env.subscription }}
+          az account set --subscription ${{ env.subscription }}
 
         # Get list of resources with specific tag
-        resource_list= 'az resource list --tag ${{ env.tag }} --subscription ${{ env.subscription }}'
+          resource_list= 'az resource list --tag ${{ env.tag }} --subscription ${{ env.subscription }}'
 
         # Get number of resources to be deleted
-        num_resources='echo $resource_list | jq length'
+          num_resources='echo $resource_list | jq length'
          
         # Delete resources
           for((i=0; i<$num_resources; i++)); do
