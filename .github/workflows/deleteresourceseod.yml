@@ -15,5 +15,5 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
         
       - name: Delete resources eod
-        run: bash ${PWD}/scripts/deleteresourceseod.sh scripts
+        run: bash ./scripts/deleteresourceseod.sh scripts
     
