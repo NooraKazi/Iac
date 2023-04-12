@@ -42,7 +42,7 @@ jobs:
          #resourceGroupName: rgname
          
          # Specify the path or URL to the Azure Resource Manager template.
-         template: ./Script/az104-05-vnetvm-loop-template.json
+         template: ./Scripts/az104-05-vnetvm-loop-template.json
          
          # Incremental (only add resources to resource group) or Complete (remove extra resources from resource group) or Validate (only validates the template).
          deploymentMode: Incremental
