@@ -1,0 +1,37 @@
+
+# To create vms in different regions using template and parameter file in powershell
+
+Open cloudshell-> powershell
+Upload template file
+Upload parameter file
+Open parameter file and update password
+
+Define variables 
+$rgname = <resourcegroupname>
+$location1 = <region 1>
+$location2 = <region 2>
+
+# Run command
+New-azResourceGroupDeployment -ResourceGroupName $rgname -TemplateFile $HOME/<templatefilename> -TemplateParameterFile $HOME/<templateparamfile> -location1 $location1 -location2 $location2
+
+# This will create 2 vms in region 1 and 1 vm in region 2
+
+####This can also be done via ARM template and run workflow through github#######
+# filename in github 'deployarmtemplate.yml'
+
+# Through the portal Configure local and global virtual network peering
+Open virtual network vnet0 -> Peering
+Create links to allow traffic flow from 
+- vnet0 to vnet1 and vice versa
+- vnet0 to vnet2 and vice versa
+
+Open vnet1
+create links to allow traffic flow from 
+- vnet1 to vnet2 and vice versa
+
+#To test peering
+connect to vm1 via RDP
+open powershell and run as admin
+Test-NetConnection -ComputerName 10.51.0.4 -Port 3389 -InformationLevel 'Detailed'
+
+#Reference: AZ-104-MicrosoftAzureAdministrator/Instructions/Labs/LAB_05-Implement_Intersite_Connectivity.md
