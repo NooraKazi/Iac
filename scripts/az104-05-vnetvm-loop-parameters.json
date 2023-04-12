@@ -10,6 +10,12 @@
         },
         "adminPassword": {
             "value": "Password_1806"
+        },
+        "location1": {
+            "value": "eastus"
+        },
+        "location2": {
+            "value": "westus"
         }
     }
 }
