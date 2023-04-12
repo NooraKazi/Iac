@@ -30,16 +30,9 @@ jobs:
         with:
          # Provide the scope of the deployment. Valid values are: 'resourcegroup', 'managementgroup', 'subscription'
          scope: resourcegroup
-         
-         # Override the Subscription Id set by Azure Login.
-         # subscriptionId: ${{secrets.Subsciption_Id}}
-         
-         region : ${{secrets.location1}}
-         #region : ${{secrets.location2}}
-         resourceGroupName: ${{secrets.rgname}}
-         
+               
          # Provide the name of a resource group, only required for resource Group deployments.
-         #resourceGroupName: rgname
+         resourceGroupName: ${{secrets.rgname}}
          
          # Specify the path or URL to the Azure Resource Manager template.
          template: ./scripts/az104-05-vnetvm-loop-template.json
