@@ -34,8 +34,8 @@ jobs:
          # Override the Subscription Id set by Azure Login.
          # subscriptionId: ${{secrets.Subsciption_Id}}
          
-         location1 : ${{secrets.location1}}
-         location2 : ${{secrets.location2}}
+         region : ${{secrets.location1}}
+         #region : ${{secrets.location2}}
          resourceGroupName: ${{secrets.rgname}}
          
          # Provide the name of a resource group, only required for resource Group deployments.
